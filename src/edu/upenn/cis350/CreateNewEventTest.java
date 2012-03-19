@@ -52,27 +52,63 @@ public class CreateNewEventTest extends ActivityInstrumentationTestCase2<CreateN
 	
 	public void testSubmitFilled(){
 		
-		assertNotNull(eventTitle);
-		eventTitle.requestFocus();
+		activity.runOnUiThread(new Runnable() {
+			public void run() {
+				assertNotNull(eventTitle);
+				eventTitle.requestFocus();
+			}
+		});
+		
+		getInstrumentation().waitForIdleSync();
 		sendKeys("T I T L E 1");
 		assertEquals(eventTitle.getText().toString(), "title1");
-		assertNotNull(eventDesc);
-		eventDesc.requestFocus();
+		
+		activity.runOnUiThread(new Runnable() {
+			public void run() {
+				assertNotNull(eventDesc);
+				eventDesc.requestFocus();
+			}
+		});
+		
+		getInstrumentation().waitForIdleSync();
 		sendKeys("D E S C 1");
 		assertEquals(eventDesc.getText().toString(), "desc1");
-		assertNotNull(eventActions);
-		eventActions.requestFocus();
+		
+		activity.runOnUiThread(new Runnable() {
+			public void run() {
+				assertNotNull(eventActions);
+				eventActions.requestFocus();
+			}
+		});
+		
+		getInstrumentation().waitForIdleSync();
 		sendKeys("A C T I O N S 1");
 		assertEquals(eventActions.getText().toString(), "actions1");
 
-		
-		
 		activity.runOnUiThread(new Runnable() {
 			public void run() {
 				assertNotNull(contact1);
 				contact1.requestFocus();
 				contact1.setSelection(1);
-				assertEquals(contact1.getSelectedItem().toString(), "Contact 2");
+			}
+		});
+		
+		getInstrumentation().waitForIdleSync();
+		assertEquals(contact1.getSelectedItem().toString(), "Person 2");
+		
+		activity.runOnUiThread(new Runnable() {
+			public void run() {
+				assertNotNull(contact2);
+				contact2.requestFocus();
+				contact2.setSelection(3);
+			}
+		});
+		
+		getInstrumentation().waitForIdleSync();
+		assertEquals(contact2.getSelectedItem().toString(), "Person 4");
+
+		activity.runOnUiThread(new Runnable() {
+			public void run() {
 				assertNotNull(submitButton);
 				boolean result = submitButton.performClick();
 				assertTrue(result);
