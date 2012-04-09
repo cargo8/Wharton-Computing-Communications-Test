@@ -7,10 +7,10 @@ import android.widget.EditText;
 import android.widget.Spinner;
 
 
-public class ShowCommentsTest extends ActivityInstrumentationTestCase2<ShowComments> {
+public class ShowCommentsTest extends ActivityInstrumentationTestCase2<ShowMessage> {
 
 	public ShowCommentsTest() {
-		super("edu.upenn.cis350", ShowComments.class);
+		super("edu.upenn.cis350", ShowMessage.class);
 	}
 	
 	private Button submitButton;
@@ -21,12 +21,12 @@ public class ShowCommentsTest extends ActivityInstrumentationTestCase2<ShowComme
 		super.setUp();
 		Intent intent = new Intent();
 		intent.putExtra("uname", "User Name");
-    	MessagePOJO message = new MessagePOJO();
-    	message.setMessageId(1);
-    	message.setText("Message");
-    	message.setAuthor("Joe Cruz");
-    	message.setTimestamp("March 18, 2012");
-    	intent.putExtra("messagePOJO", message);
+//    	MessagePOJO message = new MessagePOJO();
+//    	message.setMessageId(1);
+//    	message.setText("Message");
+//    	message.setAuthor("Joe Cruz");
+//    	message.setTimestamp("March 18, 2012");
+//    	intent.putExtra("messagePOJO", message);
 
 		activity = getActivity();
 		submitButton = (Button)activity.findViewById(R.id.newCommentButton);

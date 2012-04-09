@@ -31,7 +31,6 @@ public class CreateNewEventTest extends ActivityInstrumentationTestCase2<CreateN
 		submitButton = (Button)activity.findViewById(R.id.eventButton);
 		eventTitle = (EditText)activity.findViewById(R.id.eventTitle);
 		eventDesc = (EditText)activity.findViewById(R.id.eventDesc);
-		eventActions = (EditText)activity.findViewById(R.id.eventActions);
 		startDate = (Button)activity.findViewById(R.id.pickStartDate);
 		endDate = (Button)activity.findViewById(R.id.pickEndDate);
 		contact1 = (Spinner)activity.findViewById(R.id.personSpinner1);
