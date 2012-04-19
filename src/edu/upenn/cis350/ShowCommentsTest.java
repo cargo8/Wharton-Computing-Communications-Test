@@ -21,12 +21,6 @@ public class ShowCommentsTest extends ActivityInstrumentationTestCase2<ShowMessa
 		super.setUp();
 		Intent intent = new Intent();
 		intent.putExtra("uname", "User Name");
-//    	MessagePOJO message = new MessagePOJO();
-//    	message.setMessageId(1);
-//    	message.setText("Message");
-//    	message.setAuthor("Joe Cruz");
-//    	message.setTimestamp("March 18, 2012");
-//    	intent.putExtra("messagePOJO", message);
 
 		activity = getActivity();
 		submitButton = (Button)activity.findViewById(R.id.newCommentButton);
