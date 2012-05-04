@@ -1,8 +1,13 @@
 package edu.upenn.cis350.test;
 
+import edu.upenn.cis350.EditProfile;
 import edu.upenn.cis350.Home;
+import edu.upenn.cis350.ManageGroups;
 import edu.upenn.cis350.R;
+import android.app.Activity;
+import android.app.Instrumentation.ActivityMonitor;
 import android.test.ActivityInstrumentationTestCase2;
+import android.view.KeyEvent;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 
@@ -60,6 +65,24 @@ public class HomeTest extends ActivityInstrumentationTestCase2<Home>{
 		String logout = (String)lv.getItemAtPosition(4);
 		assertNotNull(logout);
 		assertEquals("Logout", logout.toString());
+	}
+	
+	public void testManageGroups(){
+		ActivityMonitor am = getInstrumentation().addMonitor(ManageGroups.class.getName(), null, false);
+		getInstrumentation().sendKeyDownUpSync(KeyEvent.KEYCODE_MENU);
+		getInstrumentation().invokeMenuActionSync(hActivity, R.id.manageGroups, 0);
+		Activity a = getInstrumentation().waitForMonitorWithTimeout(am, 1000);
+		assertEquals(true, getInstrumentation().checkMonitorHit(am, 1));
+		a.finish();
+	}
+	
+	public void testEditProfile(){
+		ActivityMonitor am = getInstrumentation().addMonitor(EditProfile.class.getName(), null, false);
+		getInstrumentation().sendKeyDownUpSync(KeyEvent.KEYCODE_MENU);
+		getInstrumentation().invokeMenuActionSync(hActivity, R.id.editProfile, 0);
+		Activity a = getInstrumentation().waitForMonitorWithTimeout(am, 1000);
+		assertEquals(true, getInstrumentation().checkMonitorHit(am, 1));
+		a.finish();
 	}
 		
 }
