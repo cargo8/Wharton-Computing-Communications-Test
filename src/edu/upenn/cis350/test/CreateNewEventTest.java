@@ -2,11 +2,7 @@ package edu.upenn.cis350.test;
 
 import edu.upenn.cis350.CreateNewEvent;
 import edu.upenn.cis350.R;
-import edu.upenn.cis350.R.id;
-import android.app.Activity;
-import android.os.Handler;
-import android.os.Looper;
-import android.test.ActivityInstrumentationTestCase2;
+import edu.upenn.cis350.R.id;import android.test.ActivityInstrumentationTestCase2;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
@@ -41,13 +37,13 @@ public class CreateNewEventTest extends ActivityInstrumentationTestCase2<CreateN
 	}
 	
 	public void testSubmitEmpty(){
-		Handler refresh = new Handler(Looper.getMainLooper());
-		refresh.post(new Runnable(){
+		cActivity.runOnUiThread(new Runnable(){
 			public void run(){
-				assertNull(submitButton);
-//				assertTrue(submitButton.performClick());
+				assertNotNull(submitButton);
+//				assertFalse(submitButton.performClick());
 			}
 		});
+		getInstrumentation().waitForIdleSync();
 	}
 	
 //	public void testSubmitFilled(){
