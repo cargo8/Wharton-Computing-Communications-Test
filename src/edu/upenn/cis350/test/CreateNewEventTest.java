@@ -43,8 +43,6 @@ public class CreateNewEventTest extends ActivityInstrumentationTestCase2<CreateN
 		// method is private
 	}
 	
-	
-	
 	public void testSubmitEmpty(){
 		cActivity.runOnUiThread(new Runnable() {
 			public void run() {

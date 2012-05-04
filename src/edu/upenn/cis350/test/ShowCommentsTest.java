@@ -16,7 +16,7 @@ public class ShowCommentsTest extends ActivityInstrumentationTestCase2<ShowMessa
 		super("edu.upenn.cis350", ShowMessage.class);
 	}
 	
-	private Button submitButton;
+	private Button postCommentButton;
 	private Activity activity;
 	private EditText commentText;	
 	
@@ -26,7 +26,7 @@ public class ShowCommentsTest extends ActivityInstrumentationTestCase2<ShowMessa
 		intent.putExtra("uname", "User Name");
 
 		activity = getActivity();
-		submitButton = (Button)activity.findViewById(R.id.newCommentButton);
+		postCommentButton = (Button)activity.findViewById(R.id.newCommentButton);
 		commentText = (EditText)activity.findViewById(R.id.newCommentText);
 	}
 	
@@ -34,8 +34,8 @@ public class ShowCommentsTest extends ActivityInstrumentationTestCase2<ShowMessa
 		
 		activity.runOnUiThread(new Runnable() {
 			public void run() {
-				assertNotNull(submitButton);
-				boolean result = submitButton.performClick();
+				assertNotNull(postCommentButton);
+				boolean result = postCommentButton.performClick();
 				assertTrue(result);
 			}
 		});
@@ -57,14 +57,13 @@ public class ShowCommentsTest extends ActivityInstrumentationTestCase2<ShowMessa
 		
 		activity.runOnUiThread(new Runnable() {
 			public void run() {
-				assertNotNull(submitButton);
-				boolean result = submitButton.performClick();
+				assertNotNull(postCommentButton);
+				boolean result = postCommentButton.performClick();
 				assertTrue(result);
 			}
 		});
 		
 		getInstrumentation().waitForIdleSync();
-		
 		
 	}
 
