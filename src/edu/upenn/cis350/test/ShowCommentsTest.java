@@ -17,34 +17,30 @@ public class ShowCommentsTest extends ActivityInstrumentationTestCase2<ShowMessa
 	}
 	
 	private Button postCommentButton;
-	private Activity activity;
+	private Activity cActivity;
 	private EditText commentText;	
 	
 	public void setUp() throws Exception{
 		super.setUp();
-		Intent intent = new Intent();
-		intent.putExtra("uname", "User Name");
-
-		activity = getActivity();
-		postCommentButton = (Button)activity.findViewById(R.id.newCommentButton);
-		commentText = (EditText)activity.findViewById(R.id.newCommentText);
+		cActivity = this.getActivity();
+		postCommentButton = (Button) cActivity.findViewById(R.id.newCommentButton);
+		commentText = (EditText) cActivity.findViewById(R.id.newCommentText);
 	}
 	
 	public void testSubmitEmpty(){
-		
-		activity.runOnUiThread(new Runnable() {
+		cActivity.runOnUiThread(new Runnable() {
 			public void run() {
 				assertNotNull(postCommentButton);
 				boolean result = postCommentButton.performClick();
 				assertTrue(result);
 			}
 		});
-		
+		getInstrumentation().waitForIdleSync();
 	}
 	
 	public void testSubmitFilled(){
 		
-		activity.runOnUiThread(new Runnable() {
+		cActivity.runOnUiThread(new Runnable() {
 			public void run() {
 				assertNotNull(commentText);
 				commentText.requestFocus();
@@ -55,7 +51,7 @@ public class ShowCommentsTest extends ActivityInstrumentationTestCase2<ShowMessa
 		sendKeys("N E W C O M M E N T");
 		assertEquals(commentText.getText().toString(), "newcomment");
 		
-		activity.runOnUiThread(new Runnable() {
+		cActivity.runOnUiThread(new Runnable() {
 			public void run() {
 				assertNotNull(postCommentButton);
 				boolean result = postCommentButton.performClick();
