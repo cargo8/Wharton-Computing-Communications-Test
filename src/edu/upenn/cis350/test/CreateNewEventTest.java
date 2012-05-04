@@ -9,7 +9,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 
-
 public class CreateNewEventTest extends ActivityInstrumentationTestCase2<CreateNewEvent> {
 
 	private Button submitButton;
